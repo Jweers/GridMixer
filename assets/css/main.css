@@ -1,0 +1,208 @@
+/*
+  Main CSS File for the Grid Mixer
+*/
+
+.hidden {
+  display: none !important;
+}
+
+/* Chart CSS */
+.chart rect {
+  fill: steelblue;
+}
+
+.chart text {
+  fill: white;
+  font: 10px sans-serif;
+  text-anchor: end;
+}
+
+.axis text {
+  font: 10px sans-serif;
+  fill: black;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: black;
+  shape-rendering: crispEdges;
+}
+
+.area {
+  fill: rgba(70, 130, 180); /* steelblue */
+  fill: rgba(70, 130, 180, 0.7); /* 70% steelblue */
+}
+
+.line {
+  fill: none;
+  stroke: rgb(0,0,40);
+  stroke-width: 1.5px;
+}
+
+
+/* Bootstrap Button Tweaks */
+.btn-remove {
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  -webkit-appearance: none;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 20px;
+  color: #eb362f;
+  text-shadow: 0 1px 0 #ffffff;
+}
+
+.btn-remove:hover {
+  color: #bd362f;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-edit {
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  -webkit-appearance: none;
+}
+
+
+/* Bootstrap Form mods */
+div.controls label.radio { 
+  padding: 1px 10px 1px 25px;
+  background-color: #f2f2f2;
+  border: 1px solid #eee;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+div.controls label.radio:hover {
+  background: #445244;
+  border-color: #224222;
+  color: white;
+}
+
+div.controls label.radio.selected {
+  background: none repeat scroll 0 0 #cde69c;
+  border: 1px solid #a5d24a;
+  color: #225222;
+}
+
+/* Panels (General) */
+
+div.panel {
+  position: absolute;
+  padding: 5px;
+  border: 2px solid #aaaaaa;
+  border-radius: 8px;
+  background: url(../img/80pct-white.png) 0 0 repeat;
+}
+
+div.close-icon {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: url(../img/close-icon-sprite.png) 0 0 no-repeat transparent;
+  width: 20px;
+  height: 20px;
+}
+
+div.close-icon:hover {
+  background-position: -20px 0;
+  cursor: pointer;
+}
+
+
+/* Info Panel */
+
+div#info {
+  top: 45px;
+  left: -6px;
+}
+
+div#info-icon {
+  float: left;
+  width: 21px;
+  height: 21px;
+  background: url(../img/info-icon-sprite.png) 0 0 no-repeat transparent;
+}
+
+div#info-icon:hover {
+  background-position: -21px 0;
+  cursor: pointer;
+}
+
+div#info > div.close-icon {
+  display: none;
+}
+
+div#info-innards {
+  display: none;
+}
+
+div#info-innards > span {
+  color: #444444;
+  display: block;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-left: 30px;
+}
+
+div#info a:hover {
+  text-decoration: underline;
+}
+
+/* Message Panel */
+div#message {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 25em;
+  margin-left: -12em;
+  margin-top: -25px;
+  text-align: center;
+  padding: 0.5em;
+}
+
+div#message img#loading {
+  display: none;
+}
+
+div#message span {
+  font-size: 1.2em;
+  font-style: italic;
+  font-weight: bold;
+  color: #666;  
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+
+/* Loading Image */
+div.loadingImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: none;
+  background: url(../img/60pct-white.png) repeat transparent;
+  text-align: center;
+}
+
+div.loadingImg img {
+  position: relative;
+  top: 50%;
+  margin: -16px;
+}
+
+/*
+ * So datepicker will show up on top of the modal dialog (which has z-index of 1050)
+ */
+.datepicker{
+	z-index:1060;
+}

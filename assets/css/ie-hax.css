@@ -1,0 +1,45 @@
+/*
+ * A series of improvements to bring IE8 and IE9 up to par, should only be loaded if IE less than or equal to 9 is detected
+ * <!-- [if IE lte 9]>...
+ */
+
+div#content .navbar .nav > .active > a, 
+div#content .navbar .nav > .active > a:hover, 
+div#content .navbar .nav > .active > a:focus {
+  border-left: 1px solid #d4d4d4;
+  border-right: 1px solid #d4d4d4;
+}
+
+div#content .navbar input.search-query {
+  color: #555;
+  padding-left: 5px;
+  height: 20px;
+  line-height: 20px !important;
+}
+
+div#content .navbar input.search-query.muted {
+  color: #999;
+  font-style: italic;
+}
+
+.a2a_container {
+  width: 215px;
+  max-height: 23px;
+  overflow: hidden;
+}
+
+.a2a_container img {
+  height: 22px !important;
+  width: 22px !important;
+}
+
+#addFileInput.ghost-hidden {
+  position: absolute;
+  left: -150px;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+table .truncate-text {
+  width: 24em;
+}

@@ -1,0 +1,36 @@
+<?php 
+
+/**
+ * Local Settings (Static Class SETTINGS)
+ * @author jweers
+ * To be required on every page.
+ */
+abstract class Settings {
+  //Google Analytics
+  const enableGoogleAnalytics = false;
+ 
+  //Database
+  const dbHost = "localhost";
+  const dbUser = null;
+  const dbName = "gdr";
+  const dbPass = '';
+  const dbPort = 27017;
+  
+  //Outgoing Communications
+  const outgoingEmailAddr = "openei.webmaster@nrel.gov";
+  
+  //Logging
+  const enableLocalLogging = false;
+  const logFilePath = "logs";
+  const logFileName = 'gdr.log';
+  
+  //Default TimeZone
+  const timezone = "America/Denver";
+  
+  //Default Site Meta
+  const pageTitle = "Grid Mixer";
+  const metaKeywords = "Grid Mixer, smart grid, renewable energy, energy grid";
+  const metaDescription = "A fun and educational game that pits you against the challenges of maintaining a healthy electric grid in the modern world.";
+  
+}
+?>

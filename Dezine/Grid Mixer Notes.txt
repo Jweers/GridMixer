@@ -1,0 +1,17 @@
+Grid Mixer Notes
+http://www.caiso.com/outlook/SystemStatus.html
+real time supply and demand, including RE breakdown
+
+"Spending Points"
+- Buy auto-rampers to help you on a tough level
+- Buy new RE tech like battery backups, etc.
+- Mandatory spending, like supporting new residents.
+  "10,000 new resident's moved in, what will you build?"
+    - installation "cost" vs. fuel "cost"?
+    or RE portfolio standards, i.e. you _must_ add 11% RE.
+
+Track total pollutant level (in meteric Tonnes)
+
+Should be able to pick their city (for size/demand, generating mix pulled from state).
+
+Level selector is the US map.  Pick interconnect, then migrate through cities and face different challenges in level mode.  Bonus: play your home town?

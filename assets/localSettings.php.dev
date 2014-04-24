@@ -1,0 +1,67 @@
+<?php 
+/**
+ * Local Settings (Static Class SETTINGS)
+ * To be required on every page.
+ * 
+ */
+
+abstract class Settings {
+  //Google Analytics
+  const enableGoogleAnalytics = false;
+ 
+  //Database
+  const dbHost = "localhost";
+  const dbUser = null;
+  const dbName = "gdr";
+  const dbPass = '';
+  const dbPort = 27017;
+  
+  //OpenEI
+  const memcachedServer = "dev-datatier-mc1.openei.org:11211";
+  const askUrl = "http://dev.openei.org/wiki/Special:Ask/";
+  const authxfer = 'https://dev.openei.org/apps/servicescripts/authxfer.php';
+  const useCookieShare = true;
+  
+  //Outgoing Communications
+  const outgoingEmailAddr = "openei.webmaster@nrel.gov";
+  
+  //Logging
+  const enableLocalLogging = true;
+  const logFilePath = "logs";
+  const logFileName = 'rm.log';
+  
+  //Default TimeZone
+  const timezone = "UTC";
+  
+  //Default Site Meta
+  const pageTitle = "Geothermal Data Repository";
+  const metaKeywords = "Geothermal Data, GDR, DOE-GDR, well logs, lithology reports, GTP Projects, temperature at depth, app, webapp";
+  const metaDescription = "A repository of geothermal data and information, collected by the US Department of Energy. Application developed by NREL, powered by OpenEI: Open Energy Information.";
+  
+  //Define MW Globals
+  const wgSitename = "Open Energy Information";
+  const wgCookiePrefix = "wikidb";
+  const wgDBtype = "mysql";
+  const wgDBserver = "dev-datatier-s-master.openei.org";
+  const wgDBname = "wikidb";
+  const wgDBuser = "wikiuser";
+  const wgDBpassword = "wikiwiki";
+  const wgDBprefix = "";
+  const wgPathRoot = "http://dev.openei.org";
+  const wgPathToLogin = "http://dev.openei.org/w/index.php?title=Special:UserLogin";
+  const wgPathToLogout = "http://dev.openei.org/w/index.php?title=Special:UserLogout";
+  const iwDebug = false;
+  const wgDefaultReturnTo = 'OpenEI:RedirectToDevGDR';
+
+  // File upload settings
+  const chunkDir='/tmp/chunks';
+  const uploadDir='/tmp';
+
+  // CSW settings
+  const cswServer='http://dev-gdr.openei.org/';
+  const getRecordByIdUri='csw.php?request=GetRecordById&service=CSW&version=2.0.2&elementSetName=full&id=';
+  const gdrSubmissionsUri='http://dev-gdr.openei.org/submissions/';
+  const gdrFileIdUrl='http://dev-gdr.openei.org/files/%s/%s';
+  
+}
+?>
