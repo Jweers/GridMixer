@@ -1,28 +1,38 @@
 /* d3: dynamic stacked line chart.js */
+var intervals = 100; //Tweak this to control the speed of the level
+var timeInADay = 24*60*60*1000;
+var intervalDuration = timeInADay / intervals;
+var midnight = new Date().setHours(0,0,0,0);
 var parseDate = d3.time.format("%d-%b-%y").parse;
-var midnight = new Date().setHours(0, 0, 0, 0);
 
 //Randomly generate data
-var count = 1;
-var n = 40, //number of points to display at any given time
-    data = d3.range(n).map(function(n){
-      return {
-        demand: Math.abs(Math.random()), 
-        time: n};
+var getLevel = function(n){
+  var data = [];
+  for (var i=0; i < intervals; i++){
+    data.push({
+      demand: Math.abs(Math.random()) * 50,
+      time: midnight + (i * intervalDuration)
     });
+  }
+  return data;
+};
 
+var needle = midnight; //starts at midnight and increments by intervalDuration
+
+var n = 40, //number of points to display at any given time
+    data = getLevel(1);
 
 $(function(){
   var margin = {top: 20, right: 20, bottom: 20, left: 40},
     width = 960 - margin.left - margin.right,
     height = 200 - margin.top - margin.bottom;
   
-  var x = d3.scale.linear()
-    .domain([count, n - 2 + count])
+  var x = d3.time.scale()
+    .domain([needle, (n - 2) * intervalDuration + needle])
     .range([0, width]);
   
   var y = d3.scale.linear()
-    .domain([0, 1])
+    .domain([0, 50])
     .range([height, 0]);
   
   var line = d3.svg.line()
@@ -77,14 +87,15 @@ $(function(){
   function tick() {
   
     // update the domains
-    count++;
-    x.domain([count, n - 2 + count]);
+    needle += intervalDuration;
+    x.domain([needle, (n - 2) * intervalDuration + needle]);
     
     // push a new data point onto the back
+    /* not necessary??
     data.push({
-      demand: Math.abs(Math.random()), 
-      time: n + count
-    });
+      demand: Math.abs(Math.random()) * 50, 
+      time: needle + (n * intervalDuration)
+    }); */
     
     // slide the x-axis left
     axis.transition()
@@ -99,7 +110,7 @@ $(function(){
     .transition()
       .duration(500)
       .ease("linear")
-      .attr("transform", "translate(" + x(count-1) + "," + x(count) + ")");
+      .attr("transform", "translate(" + x(needle-intervalDuration) + "," + x(needle) + ")");
 
     // redraw the area and slide it left
     demandarea.attr("d", area)
@@ -107,7 +118,7 @@ $(function(){
       .transition()
         .duration(500)
         .ease("linear")
-        .attr("transform", "translate(" + x(count-1) + "," + x(count) + ")")
+        .attr("transform", "translate(" + x(needle-intervalDuration) + "," + x(needle) + ")")
         .each("end", tick);    
 
     
