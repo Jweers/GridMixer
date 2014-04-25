@@ -13,6 +13,11 @@
     
     <svg id="livegrid" class="chart" width="420" height="120"></svg>
     <script type="text/javascript" src="assets/js/chart.js"></script>
+    
+    <p>
+      <button class="btn btn-success" onclick="GM.start()">Start</button>
+      <button class="btn btn-danger" onclick="GM.stop()">Stop</button>
+    </p>
 
   </div>
 <?php

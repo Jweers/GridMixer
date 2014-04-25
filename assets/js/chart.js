@@ -1,5 +1,5 @@
 /* d3: dynamic stacked line chart.js */
-var intervals = 100; //Tweak this to control the speed of the level
+var intervals = GM.speed; //Tweak in game.js
 var timeInADay = 24*60*60*1000;
 var intervalDuration = timeInADay / intervals;
 var midnight = new Date().setHours(0,0,0,0);
@@ -85,45 +85,49 @@ $(function(){
   
   
   function tick() {
-  
-    // update the domains
-    needle += intervalDuration;
-    x.domain([needle, (n - 2) * intervalDuration + needle]);
-    
-    // push a new data point onto the back
-    /* not necessary??
-    data.push({
-      demand: Math.abs(Math.random()) * 50, 
-      time: needle + (n * intervalDuration)
-    }); */
-    
-    // slide the x-axis left
-    axis.transition()
-        .duration(500)
-        .ease("linear")
-        .call(x.axis);
-    
-    
-    // redraw the line slide it left
-    demandcurve.attr("d", line)
-    .attr("transform", null)
-    .transition()
-      .duration(500)
-      .ease("linear")
-      .attr("transform", "translate(" + x(needle-intervalDuration) + "," + x(needle) + ")");
-
-    // redraw the area and slide it left
-    demandarea.attr("d", area)
+    if (GM.active){
+      // update the domains
+      needle += intervalDuration;
+      x.domain([needle, (n - 2) * intervalDuration + needle]);
+      
+      // push a new data point onto the back
+      /* Not necessary.  May be able to add end-of-level shading here...
+      data.push({
+        demand: Math.abs(Math.random()) * 50, 
+        time: needle + (n * intervalDuration)
+      }); */
+      
+      // slide the x-axis left
+      axis.transition()
+          .duration(500)
+          .ease("linear")
+          .call(x.axis);
+      
+      
+      // redraw the line slide it left
+      demandcurve.attr("d", line)
       .attr("transform", null)
       .transition()
         .duration(500)
         .ease("linear")
-        .attr("transform", "translate(" + x(needle-intervalDuration) + "," + x(needle) + ")")
-        .each("end", tick);    
+        .attr("transform", "translate(" + x(needle-intervalDuration) + "," + x(needle) + ")");
 
-    
-    // pop the old data point off the front
-    data.shift();
-  
+      // redraw the area and slide it left
+      demandarea.attr("d", area)
+        .attr("transform", null)
+        .transition()
+          .duration(500)
+          .ease("linear")
+          .attr("transform", "translate(" + x(needle-intervalDuration) + "," + x(needle) + ")")
+          .each("end", tick);    
+
+      
+      // pop the old data point off the front
+      data.shift();      
+    } else {
+      setTimeout(tick, 500);
+      //TODO: Remove dependence on speed from the chart and coordinate?
+    }
+
   }
 });

@@ -27,6 +27,7 @@
   <script type="text/javascript" src="assets/js/main.js"></script>
   <script type="text/javascript" src="assets/js/common.js"></script>
   <!-- <script type="text/javascript" src="assets/js/userMenu.js"></script> -->
+  <script type="text/javascript" src="assets/js/game.js"></script>
   
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
