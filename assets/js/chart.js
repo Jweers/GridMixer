@@ -1,26 +1,10 @@
 /* d3: dynamic stacked line chart.js */
-var intervals = GM.speed; //Tweak in game.js
-var timeInADay = 24*60*60*1000;
-var intervalDuration = timeInADay / intervals;
-var midnight = new Date().setHours(0,0,0,0);
-var parseDate = d3.time.format("%d-%b-%y").parse;
 
-//Randomly generate data
-var getLevel = function(n){
-  var data = [];
-  for (var i=0; i < intervals; i++){
-    data.push({
-      demand: Math.abs(Math.random()) * 50,
-      time: midnight + (i * intervalDuration)
-    });
-  }
-  return data;
-};
-
-var needle = midnight; //starts at midnight and increments by intervalDuration
+//Leftover from online example, in case I need it.
+//var parseDate = d3.time.format("%d-%b-%y").parse;
 
 var n = 40, //number of points to display at any given time
-    data = getLevel(1);
+    data = GM.getLevel(1);
 
 $(function(){
   var margin = {top: 20, right: 20, bottom: 20, left: 40},
@@ -28,7 +12,7 @@ $(function(){
     height = 200 - margin.top - margin.bottom;
   
   var x = d3.time.scale()
-    .domain([needle, (n - 2) * intervalDuration + needle])
+    .domain([GM.needle, (n - 2) * GM.intervalDuration + GM.needle])
     .range([0, width]);
   
   var y = d3.scale.linear()
@@ -87,14 +71,14 @@ $(function(){
   function tick() {
     if (GM.active){
       // update the domains
-      needle += intervalDuration;
-      x.domain([needle, (n - 2) * intervalDuration + needle]);
+      GM.incrementNeedle();
+      x.domain([GM.needle, (n - 2) * GM.intervalDuration + GM.needle]);
       
       // push a new data point onto the back
       /* Not necessary.  May be able to add end-of-level shading here...
       data.push({
         demand: Math.abs(Math.random()) * 50, 
-        time: needle + (n * intervalDuration)
+        time: GM.needle + (n * GM.intervalDuration)
       }); */
       
       // slide the x-axis left
@@ -110,7 +94,7 @@ $(function(){
       .transition()
         .duration(500)
         .ease("linear")
-        .attr("transform", "translate(" + x(needle-intervalDuration) + "," + x(needle) + ")");
+        .attr("transform", "translate(" + x(GM.needle - GM.intervalDuration) + "," + x(GM.needle) + ")");
 
       // redraw the area and slide it left
       demandarea.attr("d", area)
@@ -118,7 +102,7 @@ $(function(){
         .transition()
           .duration(500)
           .ease("linear")
-          .attr("transform", "translate(" + x(needle-intervalDuration) + "," + x(needle) + ")")
+          .attr("transform", "translate(" + x(GM.needle - GM.intervalDuration) + "," + x(GM.needle) + ")")
           .each("end", tick);    
 
       
