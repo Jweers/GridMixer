@@ -12,56 +12,25 @@ abstract class Settings {
   //Database
   const dbHost = "localhost";
   const dbUser = null;
-  const dbName = "gdr";
+  const dbName = "gridmixer";
   const dbPass = '';
   const dbPort = 27017;
   
-  //OpenEI
-  const memcachedServer = "datatier-mc1.openei.org:11211";
-  const askUrl = "http://en.openei.org/wiki/Special:Ask/";
-  const authxfer = 'https://en.openei.org/apps/servicescripts/authxfer.php';
-  const useCookieShare = true;
-  
   //Outgoing Communications
-  const outgoingEmailAddr = "openei.webmaster@nrel.gov";
+  const outgoingEmailAddr = "gamemaster@gridmixer.com";
   
   //Logging
-  const enableLocalLogging = false;
+  const enableLocalLogging = true;
   const logFilePath = "logs";
-  const logFileName = 'rm.log';
+  const logFileName = 'gm.log';
   
   //Default TimeZone
   const timezone = "UTC";
   
   //Default Site Meta
-  const pageTitle = "Geothermal Data Repository";
-  const metaKeywords = "Geothermal Data, GDR, DOE-GDR, well logs, lithology reports, GTP Projects, temperature at depth, app, webapp";
-  const metaDescription = "A repository of geothermal data and information, collected by the US Department of Energy. Application developed by NREL, powered by OpenEI: Open Energy Information.";
+  const pageTitle = "Grid Mixer";
+  const metaKeywords = "Grid Mixer, smart grid, renewable energy, energy grid";
+  const metaDescription = "A fun and educational game that pits you against the challenges of maintaining a healthy electric grid in the modern world.";
   
-  //Define MW Globals
-  const wgSitename = "Open Energy Information";
-  const wgCookiePrefix = "wikidb";
-  const wgDBtype = "mysql";
-  const wgDBserver = "datatier-s-master.openei.org";
-  const wgDBname = "wikidb";
-  const wgDBuser = "wikiuser";
-  const wgDBpassword = "wikiwiki";
-  const wgDBprefix = "";
-  const wgPathRoot = "http://en.openei.org";
-  const wgPathToLogin = "http://en.openei.org/w/index.php?title=Special:UserLogin";
-  const wgPathToLogout = "http://en.openei.org/w/index.php?title=Special:UserLogout";
-  const iwDebug = false;
-  const wgDefaultReturnTo = 'OpenEI:RedirectToGDR';
-  
-  // File upload settings
-  const chunkDir='/tmp/chunks';
-  const uploadDir='/tmp';
-
-  // CSW settings
-  const cswServer='http://gdr.openei.org/';
-  const getRecordByIdUri='csw.php?request=GetRecordById&service=CSW&version=2.0.2&elementSetName=full&id=';
-  const gdrSubmissionsUri='http://gdr.openei.org/submissions/';
-  const gdrFileIdUrl='http://gdr.openei.org/files/%s/%s';
-
 }
 ?>

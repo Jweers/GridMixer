@@ -12,17 +12,17 @@ abstract class Settings {
   //Database
   const dbHost = "localhost";
   const dbUser = null;
-  const dbName = "gdr";
+  const dbName = "gridmixer";
   const dbPass = '';
   const dbPort = 27017;
   
   //Outgoing Communications
-  const outgoingEmailAddr = "openei.webmaster@nrel.gov";
+  const outgoingEmailAddr = "gamemaser@gridmixer.com";
   
   //Logging
   const enableLocalLogging = false;
   const logFilePath = "logs";
-  const logFileName = 'gdr.log';
+  const logFileName = 'gm.log';
   
   //Default TimeZone
   const timezone = "America/Denver";
