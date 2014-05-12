@@ -1,9 +1,11 @@
-grid-mixer
+Grid Mixer
 ==========
 
-This project is currently in the early development phases.  The goal of GridMixer is to develop a fun, interactive game that also educates players on some of the basic principals of modern electric grid integration and renewable energy.
+Note: This project is currently in the early testing and development phases.  At best, it's a proof of concept. 
 
-The _Dezine_ folder contains common documents and elements used in the creation of final assets (PSDs for example) and will not be deployed with the rest of the code.
+The goal of GridMixer is to develop a fun, interactive game that also educates players on some of the basic principals of modern electric grid integration and renewable energy.
+
+The **Dezine** folder contains common documents and elements used in the creation of final assets (PSDs for example) and will not be deployed with the rest of the code.
 
 Installation Instructions
 -------------------------
