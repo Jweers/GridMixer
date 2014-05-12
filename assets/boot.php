@@ -7,7 +7,7 @@
   //Must be first.
   require_once 'assets/localSettings.php';
   
-  //Declate Default Timezone (GDR Server uses UTC)
+  //Declate Default Timezone
   date_default_timezone_set(Settings::timezone);
   
   //Initiate Logger ?
