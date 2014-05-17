@@ -1,12 +1,9 @@
 /* d3: dynamic stacked line chart.js */
 
-//Leftover from online example, in case I need it.
-//var parseDate = d3.time.format("%d-%b-%y").parse;
-
 var n = 40, //number of points to display at any given time
     data = GM.getLevel(1);
 
-$(function(){
+function loadChart(data){
   var margin = {top: 20, right: 20, bottom: 20, left: 40},
     width = 960 - margin.left - margin.right,
     height = 200 - margin.top - margin.bottom;
@@ -83,7 +80,7 @@ $(function(){
       
       // slide the x-axis left
       axis.transition()
-          .duration(500)
+          .duration(GM.speed)
           .ease("linear")
           .call(x.axis);
       
@@ -92,7 +89,7 @@ $(function(){
       demandcurve.attr("d", line)
       .attr("transform", null)
       .transition()
-        .duration(500)
+        .duration(GM.speed)
         .ease("linear")
         .attr("transform", "translate(" + x(GM.needle - GM.intervalDuration) + "," + x(GM.needle) + ")");
 
@@ -100,7 +97,7 @@ $(function(){
       demandarea.attr("d", area)
         .attr("transform", null)
         .transition()
-          .duration(500)
+          .duration(GM.speed)
           .ease("linear")
           .attr("transform", "translate(" + x(GM.needle - GM.intervalDuration) + "," + x(GM.needle) + ")")
           .each("end", tick);    
@@ -109,9 +106,8 @@ $(function(){
       // pop the old data point off the front
       data.shift();      
     } else {
-      setTimeout(tick, 500);
-      //TODO: Remove dependence on speed from the chart and coordinate?
+      setTimeout(tick, GM.speed);
     }
 
   }
-});
+}

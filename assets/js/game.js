@@ -1,6 +1,7 @@
 /* GM game controller (object) */ 
 var GM = {
   active: false,
+  level: {},
   
   /**
    * Returns the data object for level 'n'
@@ -9,23 +10,35 @@ var GM = {
    * @returns {Array} data (array of objects)
    */
   getLevel: function(id){
-    //randomly generated level 'n'
-    var data = [];
-    var demand = 13;
-    var intervals = this.getNumberOfIntervals();
-    for (var i=0; i < intervals; i++){
-      demand += Math.abs(Math.random()) * 2 - 1;
-      if (i > parseInt(intervals/4) && i < (intervals / 2)){
-        demand += Math.abs(Math.random()) * 3;
-      }else if (i > intervals/2){
-        demand -= Math.abs(Math.random()) * 1;
+    //fetch level from database
+    $.ajax({
+      url: 'api',
+      type:"POST",
+      dataType: 'json',
+      data: {
+        action: 'getLevel',
+        id: id,
+        format: 'json'
+      },
+      success: function(response){
+        if (response.error){
+          //showAlert('#gameAlert', response.errorMsg);
+          alert('Failed to load level: ' + errorMsg);
+          return;
+        }
+        var levelInfo = response.result;
+        GM.level = levelInfo;
+        //load level
+        var levelData =  levelInfo.demand;
+        //Convert time string to current datetime objects
+        for (i in levelData){
+          var time = levelData[i].time.split(':');
+          levelData[i].time = new Date().setHours(time[0],time[1],time[2],0);
+        }
+        GM.level.demand = levelData;
+        loadChart(levelData);
       }
-      data.push({
-        demand: demand,
-        time: this.midnight + (i * this.intervalDuration)
-      });
-    }
-    return data;
+    });    
   },
   
   getNeedle: function(){
@@ -48,7 +61,7 @@ var GM = {
   
   needle: undefined, //starts at midnight and increments by intervalDuration
   
-  speed: 100, //Tweak this to control the speed of the level
+  speed: 250, //Tweak this to control the speed of the level (lower number = faster level)
   
   start: function(){
     this.active = true;
