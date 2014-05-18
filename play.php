@@ -23,8 +23,7 @@
 
   </div>
   <script type="text/javascript">
-    var n = 40, //number of points to display at any given time
-        data = GM.getLevel(<?php echo $level; ?>);
+    var data = GM.getLevel(<?php echo $level; ?>);
   </script>
 <?php
   //Render the Footer
