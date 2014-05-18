@@ -13,16 +13,11 @@ RewriteRule .* - [F,L]
 RewriteRule ([a-zA-Z0-9_-]+)\.php/ error.php [R]
 
 RewriteRule ^home$ index.php
-RewriteRule ^files/$ error.php?m=403
-
-RewriteCond %{REQUEST_URI} ^(.*)datasets?(.*)
-RewriteRule .* %1submissions%2 [R=301,L]
 
 RewriteCond %{HTTPS} =on
 RewriteRule (.*) http://%{HTTP_HOST}/$1 [R=301,L] 
 
-RewriteRule submissions$ %{REQUEST_URI}/ [R,L]
-RewriteRule submissions/?$ view.php?id=all
-RewriteRule submissions/([0-9]+|all|mine)$ view.php?id=$1 [QSA]
+RewriteRule level$ %{REQUEST_URI}-1 [R,L]
+RewriteRule level-([0-9]+)$ play.php?level=$1 [QSA]
 
 RewriteRule ^([a-zA-Z0-9_-]+)(?!\.php)$ $1.php [L]
