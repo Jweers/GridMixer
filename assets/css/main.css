@@ -2,8 +2,17 @@
   Main CSS File for the Grid Mixer
 */
 
+body {
+  font-family: "Open Sans", Helvetica, sans-serif;
+}
+
 .hidden {
   display: none !important;
+}
+
+.footer {
+  margin-top: 1.5em;
+  color: #aaa;
 }
 
 /* Chart CSS */

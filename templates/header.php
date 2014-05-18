@@ -12,6 +12,7 @@
   <meta name="Description" content="<?php echo $META_DESCRIPTION; ?>"/>
   
   <!-- Core CSS -->
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="assets/css/main.css" type="text/css" />
   <!-- <link rel="stylesheet" href="assets/css/usermenu.css" type="text/css" /> -->
   <link rel="stylesheet" href="assets/css/bootstrap.css" type="text/css" />
