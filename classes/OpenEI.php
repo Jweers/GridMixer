@@ -12,7 +12,7 @@ class OpenEI {
 
   const debug = false;
 
-  private static $askUrl = "http://dev.openei.org/wiki/Special:Ask/"; 
+  const askUrl = "http://dev.openei.org/wiki/Special:Ask/"; 
 
   /**
    * ask (query)
@@ -33,7 +33,7 @@ class OpenEI {
       'format' => 'json'
     );
     //Assemble Request
-    $requestUri = self::askUrl . str_replace(array(' ','[',']','?','/','|'),array('-20','-5B','-5D','-3F','-2F','/'),$query);
+    $requestUri = self::askUrl . str_replace(array('-',' ','[',']','?','/','|'),array('-2D','-20','-5B','-5D','-3F','-2F','/'),$query);
     foreach ($params as $param => $val){
       $requestUri .= "/$param%3D$val";
     }

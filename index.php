@@ -9,16 +9,14 @@
 ?>
   <div id="app-container" style="position:relative;">
 
-    <h1>Grid Mixer Test</h1>
+    <h1>Grid Mixer</h1>
     
-    <svg id="livegrid" class="chart" width="420" height="120"></svg>
-    <script type="text/javascript" src="assets/js/chart.js"></script>
-    
-    <p>
-      <button class="btn btn-success" onclick="GM.start()">Start</button>
-      <button class="btn btn-danger" onclick="GM.stop()">Stop</button>
-    </p>
+    <p>Main landing page...</p>
 
+    <a href="level-1" class="btn btn-primary btn-large">Play <i class="icon-play icon-white"></i></a>
+    
+    <p>About the game...</p>
+    
   </div>
 <?php
   //Render the Footer
