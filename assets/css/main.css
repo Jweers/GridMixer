@@ -24,6 +24,44 @@ body {
   margin-right: 2em;
 }
 
+.tech-control .tech-icon {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border: 3px solid gray;
+  border-radius: 50%;
+  background: url(../img/tech-icons-sprite.png) 0 0 no-repeat gray;
+}
+.tech-control .tech-icon.wind-icon {
+  background-position: 2px 2px;
+  background-color: #7ba7ab;
+  border-color: #7ba7ab;
+}
+.tech-control .tech-icon.solar-icon {
+  background-position: 1px -50px;
+  background-color: #edcd4e;
+  border-color: #edcd4e;
+}
+.tech-control .tech-icon.coal-icon {
+  background-position: 2px -96px;
+  background-color: #605747;
+  border-color: #605747;
+}
+.tech-control .tech-icon.nuclear-icon {
+  background-position: 1px -149px;
+  background-color: #b71dd3;
+  border-color: #b71dd3;
+}
+.tech-control .tech-icon.hydro-icon {
+  background-position: 0px -200px;
+  background-color: #3399cc;
+  border-color: #3399cc;
+}
+.tech-control .tech-icon.bio-icon {
+  background-position: 0px -250px;
+  background-color: #24d73d;
+  border-color: #24d73d;
+}
 
 
 /* Chart CSS */

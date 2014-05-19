@@ -26,15 +26,13 @@
     
     <div id="techControls">
       <div class="tech-control">
-        <span class="tech-label">Wind</span>
-        <span class="tech-icon"></span>
+        <span class="tech-icon wind-icon"></span>
         <button class="btn tech-btn" id="wind-up"><i class="icon-arrow-up"></i><span class="tech-btn-label">w</span></button>
         <button class="btn tech-btn" id="wind-down"><i class="icon-arrow-down"></i><span class="tech-btn-label">e</span></button>
       </div>
       
       <div class="tech-control">
-        <span class="tech-label">Solar</span>
-        <span class="tech-icon"></span>
+        <span class="tech-icon solar-icon"></span>
         <button class="btn tech-btn" id="solar-up"><i class="icon-arrow-up"></i><span class="tech-btn-label">s</span></button>
         <button class="btn tech-btn" id="solar-down"><i class="icon-arrow-down"></i><span class="tech-btn-label">d</span></button>
       </div>
