@@ -8,11 +8,11 @@
  technologies:[
    {name:"coal",
     maxVal:100,
-    startingVal:50,
+    startingVal:10,
     availability:"constant"
    },{name:"hydro",
     maxVal:20,
-    startingVal:10,
+    startingVal:3,
     availability:"constant"}
  ],
  demand:[

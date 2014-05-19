@@ -7,6 +7,17 @@ var GM = {
     return this.mix;
   },
   
+  getCurrentSupply: function(){
+    var supply = 0,
+        mix = this.getCurrentMix();
+    for (t in mix){
+      if (typeof mix[t] != 'function'){
+        supply += mix[t];
+      }
+    }
+    return supply;
+  },
+  
   /**
    * Returns the data object for level 'n'
    * ! For now, just randomly generates a level 
@@ -85,15 +96,16 @@ var GM = {
       if (dir == "down"){
         this[tech] -= this._incrementFactor;
       }
+      //Debug
       console.log(GM.mix);
       return this[tech];
     },
     _incrementFactor: 1 //adjust to handicap the impact of an adjustment click
-  }, 
+  },
   
   needle: undefined, //starts at midnight and increments by intervalDuration
   
-  speed: 250, //Tweak this to control the speed of the level (lower number = faster level)
+  speed: 300, //Tweak this to control the speed of the level (lower number = faster level)
   
   start: function(){
     this.active = true;

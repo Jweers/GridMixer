@@ -13,7 +13,9 @@
 
     <h1>Grid Mixer Test</h1>
     
-    <svg id="livegrid" class="chart" width="420" height="120"></svg>
+    <svg id="livegrid" class="chart" width="420" height="120">
+      <polygon id="needle" fill="lightgreen" stroke="green" stroke-width="2" points="20,30 20,10 35,20" />
+    </svg>
     <script type="text/javascript" src="assets/js/chart.js"></script>
     <script type="text/javascript" src="assets/js/controls.js"></script>
     

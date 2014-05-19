@@ -1,5 +1,13 @@
 /* d3: dynamic stacked line chart.js */
 var n = 40; //number of points to display at any given time
+var needle;
+
+//Overload d3 with a method to control the zindex of elements
+d3.selection.prototype.moveToFront = function() {
+  return this.each(function(){
+    this.parentNode.appendChild(this);
+  });
+};
 
 function loadChart(data){
   var margin = {top: 20, right: 20, bottom: 20, left: 40},
@@ -60,6 +68,15 @@ function loadChart(data){
       .attr("class", "area")
       .attr("d", area);
   
+  //Set up the needle, move it to the front, and set it to the appropriate starting value
+  needle = d3.select("#needle");
+  needle.moveToFront();
+  needle.moveTo = function(val){
+    var pos = y(val);
+    return this.attr('transform','translate(0,'+pos+')');
+  };
+  needle.moveTo(GM.getCurrentSupply());
+  
   tick();
   
   
@@ -109,3 +126,4 @@ function loadChart(data){
 
   }
 }
+
