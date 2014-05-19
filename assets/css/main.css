@@ -11,9 +11,20 @@ body {
 }
 
 .footer {
+  clear: both;
   margin-top: 1.5em;
   color: #aaa;
+  font-size: smaller;
 }
+
+
+/* Controls */
+.tech-control {
+  float: left;
+  margin-right: 2em;
+}
+
+
 
 /* Chart CSS */
 .chart rect {

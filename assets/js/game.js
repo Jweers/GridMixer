@@ -3,6 +3,10 @@ var GM = {
   active: false,
   level: {},
   
+  getCurrentMix: function(){
+    return this.mix;
+  },
+  
   /**
    * Returns the data object for level 'n'
    * ! For now, just randomly generates a level 
@@ -27,11 +31,16 @@ var GM = {
           return;
         }
         var levelInfo = response.result;
-        GM.level = levelInfo;
-        //load level
+        GM.level = levelInfo; // keep? or parse?
+        //load level starting mix
+        for (i in levelInfo.technologies){
+          var tech = levelInfo.technologies[i];
+          GM.mix[tech.name] = tech.startingVal;
+        }
+        //load level data
         var levelData =  levelInfo.demand;
-        //Convert time string to current datetime objects
         for (i in levelData){
+          //Convert time string to current datetime objects
           var time = levelData[i].time.split(':');
           levelData[i].time = new Date().setHours(time[0],time[1],time[2],0);
         }
@@ -59,6 +68,29 @@ var GM = {
   
   midnight: new Date().setHours(0,0,0,0),
   
+  mix: {
+    coal: 0,
+    hydro: 0,
+    wind: 0,
+    solar: 0,
+    ng: 0,
+    //Support functions
+    tweak: function(tech,dir){
+      if (!tech){
+        return null;
+      }
+      if (dir == "up"){
+        this[tech] += this._incrementFactor;  
+      }
+      if (dir == "down"){
+        this[tech] -= this._incrementFactor;
+      }
+      console.log(GM.mix);
+      return this[tech];
+    },
+    _incrementFactor: 1 //adjust to handicap the impact of an adjustment click
+  }, 
+  
   needle: undefined, //starts at midnight and increments by intervalDuration
   
   speed: 250, //Tweak this to control the speed of the level (lower number = faster level)
@@ -69,7 +101,9 @@ var GM = {
   
   stop: function(){
     this.active = false;
-  }
+  },
+  
+  technologies: [] //technologies available to this level
 };
 
 //Initialize
