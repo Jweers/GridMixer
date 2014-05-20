@@ -2,6 +2,7 @@
 var GM = {
   active: false,
   level: {},
+  currentTime: undefined, //starts at midnight and increments by intervalDuration
   
   getCurrentMix: function(){
     return this.mix;
@@ -18,8 +19,8 @@ var GM = {
     return supply;
   },
   
-  getNeedle: function(){
-    return this.needle;
+  getCurrentTime: function(){
+    return this.currentTime;
   },
   
   getNumberOfIntervals: function(){
@@ -73,9 +74,9 @@ var GM = {
     });    
   },
   
-  incrementNeedle: function(){
-    this.needle += this.intervalDuration;
-    return this.needle;
+  incrementTime: function(){
+    this.currentTime += this.intervalDuration;
+    return this.currentTime;
   },
   
   intervalDuration: 15*60*1000, //15 minutes
@@ -105,8 +106,6 @@ var GM = {
     },
     _incrementFactor: 1 //adjust to handicap the impact of an adjustment click
   },
-  
-  needle: undefined, //starts at midnight and increments by intervalDuration
   
   speed: 300, //Tweak this to control the speed of the level (lower number = faster level)
   
@@ -174,4 +173,4 @@ var GM = {
 };
 
 //Initialize
-GM.needle = GM.midnight;
+GM.currentTime = GM.midnight;

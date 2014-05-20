@@ -15,7 +15,7 @@ function loadChart(data){
     height = 200 - margin.top - margin.bottom;
   
   var x = d3.time.scale()
-    .domain([GM.needle, (n - 2) * GM.intervalDuration + GM.needle])
+    .domain([GM.currentTime, (n - 2) * GM.intervalDuration + GM.currentTime])
     .range([0, width]);
   
   var y = d3.scale.linear()
@@ -83,14 +83,14 @@ function loadChart(data){
   function tick() {
     if (GM.active){
       // update the domains
-      GM.incrementNeedle();
-      x.domain([GM.needle, (n - 2) * GM.intervalDuration + GM.needle]);
+      GM.incrementTime();
+      x.domain([GM.currentTime, (n - 2) * GM.intervalDuration + GM.currentTime]);
       
       // push a new data point onto the back
       /* Not necessary.  May be able to add end-of-level shading here...
       data.push({
         demand: Math.abs(Math.random()) * 50, 
-        time: GM.needle + (n * GM.intervalDuration)
+        time: GM.currentTime + (n * GM.intervalDuration)
       }); */
       
       // slide the x-axis left
@@ -106,7 +106,7 @@ function loadChart(data){
       .transition()
         .duration(GM.speed)
         .ease("linear")
-        .attr("transform", "translate(" + x(GM.needle - GM.intervalDuration) + "," + x(GM.needle) + ")");
+        .attr("transform", "translate(" + x(GM.currentTime - GM.intervalDuration) + "," + x(GM.currentTime) + ")");
 
       // redraw the area and slide it left
       demandarea.attr("d", area)
@@ -114,7 +114,7 @@ function loadChart(data){
         .transition()
           .duration(GM.speed)
           .ease("linear")
-          .attr("transform", "translate(" + x(GM.needle - GM.intervalDuration) + "," + x(GM.needle) + ")")
+          .attr("transform", "translate(" + x(GM.currentTime - GM.intervalDuration) + "," + x(GM.currentTime) + ")")
           .each("end", tick);    
 
       
