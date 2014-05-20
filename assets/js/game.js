@@ -18,13 +18,22 @@ var GM = {
     return supply;
   },
   
+  getNeedle: function(){
+    return this.needle;
+  },
+  
+  getNumberOfIntervals: function(){
+    var timeInADay = 24*60*60*1000;
+    return timeInADay / this.intervalDuration;
+  },
+  
   /**
-   * Returns the data object for level 'n'
-   * ! For now, just randomly generates a level 
+   * Fetches the data object for level 'id' and loads the level
+   * Initiates the loading of all chart and control elements.
    * @param id level id
    * @returns {Array} data (array of objects)
    */
-  getLevel: function(id){
+  loadLevel: function(id){
     //fetch level from database
     $.ajax({
       url: 'api',
@@ -42,11 +51,13 @@ var GM = {
           return;
         }
         var levelInfo = response.result;
-        GM.level = levelInfo; // keep? or parse?
-        //load level starting mix
+        GM.level = levelInfo; // keep? or parse? //!!!!
+     
+        //load level starting mix and overload max capacity
         for (i in levelInfo.technologies){
           var tech = levelInfo.technologies[i];
           GM.mix[tech.name] = tech.startingVal;
+          GM.technologies[tech.name].maxCapacity = tech.maxVal;
         }
         //load level data
         var levelData =  levelInfo.demand;
@@ -57,17 +68,9 @@ var GM = {
         }
         GM.level.demand = levelData;
         loadChart(levelData);
+        buildGameControls(levelInfo.technologies);
       }
     });    
-  },
-  
-  getNeedle: function(){
-    return this.needle;
-  },
-  
-  getNumberOfIntervals: function(){
-    var timeInADay = 24*60*60*1000;
-    return timeInADay / this.intervalDuration;
   },
   
   incrementNeedle: function(){
@@ -115,7 +118,59 @@ var GM = {
     this.active = false;
   },
   
-  technologies: [] //technologies available to this level
+  //all technologies available in the game
+  //those available per level initiated in the mix from the level data
+  technologies: {
+    coal: {label:"Coal",
+      rampRateDesc: 'slow',
+      rampRate: 3,
+      maxCapacity: 100, //MW, default (can be set by level or user purchases)
+      availabilityDesc: 'constant',
+      availableCapacity: [] //set by level
+    },
+    hydro: {label:"Hydro",
+      rampRateDesc: 'medium',
+      rampRate: 2,
+      maxCapacity: 50, //MW, default (can be set by level or user purchases)
+      availabilityDesc: 'constant',
+      availableCapacity: [] //set by level
+    },
+    wind: {label:"Wind",
+      rampRateDesc: 'fast',
+      rampRate: 1,
+      maxCapacity: 15, //MW, default (can be set by level or user purchases)
+      availabilityDesc: 'variable',
+      availableCapacity: [] //set by level
+    },
+    solar: {label:"Solar",
+      rampRateDesc: 'fast',
+      rampRate: 1,
+      maxCapacity: 20, //MW, default (can be set by level or user purchases)
+      availabilityDesc: 'cycles daily',
+      availableCapacity: [] //set by level
+    },
+    ng: {label:"Natural Gas",
+      rampRateDesc: 'fast',
+      rampRate: 1,
+      maxCapacity: 50, //MW, default (can be set by level or user purchases)
+      availabilityDesc: 'constant',
+      availableCapacity: [] //set by level
+    },
+    nuclear: {label:"Nuclear",
+      rampRateDesc: 'medium',
+      rampRate: 2,
+      maxCapacity: 150, //MW, default (can be set by level or user purchases)
+      availabilityDesc: 'constant',
+      availableCapacity: [] //set by level
+    },
+    biomass: {label:"Biomass",
+      rampRateDesc: 'slow',
+      rampRate: 3,
+      maxCapacity: 10, //MW, default (can be set by level or user purchases)
+      availabilityDesc: 'constant',
+      availableCapacity: [] //set by level
+    }
+  }
 };
 
 //Initialize

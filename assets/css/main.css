@@ -15,6 +15,7 @@ body {
   margin-top: 1.5em;
   color: #aaa;
   font-size: smaller;
+  border-top: 1px solid whitesmoke;
 }
 
 
@@ -22,10 +23,13 @@ body {
 .tech-control {
   float: left;
   margin-right: 2em;
+  width: 200px;
 }
 
 .tech-control .tech-icon {
-  display: inline-block;
+  display: block;
+  float: left;
+  margin-right: 4px;
   width: 50px;
   height: 50px;
   border: 3px solid gray;
@@ -63,6 +67,100 @@ body {
   border-color: #24d73d;
 }
 
+.tech-control .progress {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  height: 22px;
+}
+.tech-control .progress > .bar {
+  box-shadow: none;
+} 
+.tech-control .progress > .bar.available {
+  opacity: 0.4;
+}
+.tech-control .progress > .bar.used {
+  opacity: 1;
+}
+.tech-control .progress.capacity-wind .bar {
+  background: #7ba7ab;
+}
+.tech-control .progress.capacity-solar .bar {
+  background: #edcd4e;
+}
+.tech-control .progress.capacity-coal .bar {
+  background: #605747;
+}
+.tech-control .progress.capacity-nuclear .bar {
+  background: #b71dd3;
+}
+.tech-control .progress.capacity-hydro .bar {
+  background: #3399cc;
+}
+.tech-control .progress.capacity-bio .bar {
+  background: #24d73d;
+}
+
+.tech-control .tech-btn {
+  padding: 0 8px;
+  margin-right: 4px;
+}
+
+.tech-control .tech-btn span {
+  display: block;
+  margin-top: -9px;
+}
+
+.tech-control .tech-label {
+  float: left;
+  width: 55px;
+  text-align: center;
+  color: gray;
+}
+.tech-control .tech-label.wind-label {
+  color: #7ba7ab;
+}
+.tech-control .tech-label.solar-label {
+  color: #edcd4e;
+}
+.tech-control .tech-label.coal-label {
+  color: #605747;
+}
+.tech-control .tech-label.nuclear-label {
+  color: #b71dd3;
+}
+.tech-control .tech-label.hydro-label {
+  color: #3399cc;
+}
+.tech-control .tech-label.bio-label {
+  color: #24d73d;
+}
+
+
+.tech-control .tech-description {
+  margin-left: 60px;
+  font-size: 0.7em;
+}
+
+.tech-control .tech-description p {
+  margin-bottom: 0px;
+}
+
+.tech-control .tech-description .tech-property {
+  display: inline-block;
+  width: 6.7em;
+  font-weight: 300;
+  color: gray;
+}
+
+.tech-control .tech-description .value {
+  font-weight: bold;
+}
+
+
+.tech-control .tech-description .tech-label {
+  font-weight: bold;
+}
+}
 
 /* Chart CSS */
 .chart rect {

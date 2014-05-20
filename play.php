@@ -27,20 +27,40 @@
     <div id="techControls">
       <div class="tech-control">
         <span class="tech-icon wind-icon"></span>
-        <button class="btn tech-btn" id="wind-up"><i class="icon-arrow-up"></i><span class="tech-btn-label">w</span></button>
-        <button class="btn tech-btn" id="wind-down"><i class="icon-arrow-down"></i><span class="tech-btn-label">e</span></button>
+        <button class="btn tech-btn btn-mini" id="wind-up"><i class="icon-chevron-up"></i><span class="tech-btn-label">w</span></button>
+        <button class="btn tech-btn btn-mini" id="wind-down"><i class="icon-chevron-down"></i><span class="tech-btn-label">e</span></button>
+        <div class="progress capacity-wind">
+          <div class="bar used" style="width: 20%"></div>
+          <div class="bar available" style="width: 20%"></div>
+        </div>
+        <div class="tech-label wind-label">Wind</div>
+        <div class="tech-description">
+          <p><span class="tech-property">Ramp rate</span><span class="value">fast</span></p>
+          <p><span class="tech-property">Availability</span><span class="value">variable</span></p>
+          <p><span class="tech-property">Max Capacity</span><span class="value">15 MW</span></p>
+        </div>
       </div>
       
       <div class="tech-control">
         <span class="tech-icon solar-icon"></span>
-        <button class="btn tech-btn" id="solar-up"><i class="icon-arrow-up"></i><span class="tech-btn-label">s</span></button>
-        <button class="btn tech-btn" id="solar-down"><i class="icon-arrow-down"></i><span class="tech-btn-label">d</span></button>
+        <button class="btn tech-btn btn-mini" id="solar-up"><i class="icon-arrow-up"></i><span class="tech-btn-label">s</span></button>
+        <button class="btn tech-btn btn-mini" id="solar-down"><i class="icon-arrow-down"></i><span class="tech-btn-label">d</span></button>
+        <div class="progress capacity-solar">
+          <div class="bar used" style="width: 20%"></div>
+          <div class="bar available" style="width: 20%"></div>
+        </div>
+        <div class="tech-label solar-label">Solar</div>
+        <div class="tech-description">
+          <p><span class="tech-property">Ramp rate</span><span class="value">fast</span></p>
+          <p><span class="tech-property">Availability</span><span class="value">cycles daily</span></p>
+          <p><span class="tech-property">Max Capacity</span><span class="value">20 MW</span></p>
+        </div>
       </div>
     </div>
 
   </div>
   <script type="text/javascript">
-    var data = GM.getLevel(<?php echo $level; ?>);
+    var data = GM.loadLevel(<?php echo $level; ?>);
   </script>
 <?php
   //Render the Footer
