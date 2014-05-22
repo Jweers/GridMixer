@@ -89,22 +89,23 @@ var GM = {
     wind: 0,
     solar: 0,
     ng: 0,
+    nuclear: 0,
     //Support functions
     tweak: function(tech,dir){
+      var incrementFactor = 1; //MW ... adjust to handicap the impact of an adjustment click
       if (!tech){
         return null;
       }
       if (dir == "up"){
-        this[tech] += this._incrementFactor;  
+        this[tech] += incrementFactor;  
       }
       if (dir == "down"){
-        this[tech] -= this._incrementFactor;
+        this[tech] -= incrementFactor;
       }
       //Debug
       console.log(GM.mix);
       return this[tech];
-    },
-    _incrementFactor: 1 //adjust to handicap the impact of an adjustment click
+    } 
   },
   
   speed: 300, //Tweak this to control the speed of the level (lower number = faster level)
@@ -156,8 +157,8 @@ var GM = {
       availableCapacity: [] //set by level
     },
     nuclear: {label:"Nuclear",
-      rampRateDesc: 'medium',
-      rampRate: 2,
+      rampRateDesc: 'very slow',
+      rampRate: 5,
       maxCapacity: 150, //MW, default (can be set by level or user purchases)
       availabilityDesc: 'constant',
       availableCapacity: [] //set by level

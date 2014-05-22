@@ -30,7 +30,7 @@
         <button class="btn tech-btn btn-mini" id="wind-up"><i class="icon-chevron-up"></i><span class="tech-btn-label">w</span></button>
         <button class="btn tech-btn btn-mini" id="wind-down"><i class="icon-chevron-down"></i><span class="tech-btn-label">e</span></button>
         <div class="progress capacity-wind">
-          <div class="bar used" style="width: 20%"></div>
+          <div class="bar used" style="width: 10%"></div>
           <div class="bar available" style="width: 20%"></div>
         </div>
         <div class="tech-label wind-label">Wind</div>
@@ -46,7 +46,7 @@
         <button class="btn tech-btn btn-mini" id="solar-up"><i class="icon-arrow-up"></i><span class="tech-btn-label">s</span></button>
         <button class="btn tech-btn btn-mini" id="solar-down"><i class="icon-arrow-down"></i><span class="tech-btn-label">d</span></button>
         <div class="progress capacity-solar">
-          <div class="bar used" style="width: 20%"></div>
+          <div class="bar used" style="width: 10%"></div>
           <div class="bar available" style="width: 20%"></div>
         </div>
         <div class="tech-label solar-label">Solar</div>

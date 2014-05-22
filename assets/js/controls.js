@@ -80,6 +80,28 @@ function buildGameControls(technologies){
     var tech = parts[0],
          val = parts[1];
     GM.mix.tweak(tech,val);
+    updateControlMeters();
     needle.moveTo(GM.getCurrentSupply());
   });
+}
+
+function updateControlMeters(){
+  var mix = GM.getCurrentMix();
+  //Both current supply and available capacity must be set as a percentage
+  //of an arbitrary value to make availabilities visually relative. -jw
+  var techMaxCapacity = 100;
+  var techCurrentSupply = 0;
+  for (t in mix){
+    if (typeof mix[t] == 'function'){
+      continue;
+    }
+    
+    //Set current value for each mix as a percentage of techMaxCapacity
+    techCurrentSupply = Math.round(mix[t] / techMaxCapacity * 100) + '%';
+    console.log(t+': '+techCurrentSupply);
+    $('.capacity-'+ t +' .bar.used').css('width',techCurrentSupply);
+    
+    //Set the max available value for each mix as a percentage of techMaxCapacity
+    //TODO: Do this thing above.
+  }
 }
