@@ -32,7 +32,7 @@
         <button class="btn tech-btn btn-mini" id="wind-down"><i class="icon-chevron-down"></i><span class="tech-btn-label">e</span></button>
         <div class="progress capacity-wind">
           <div class="bar used" style="width: 10%"></div>
-          <div class="bar available" style="width: 20%"></div>
+          <div class="bar available" style="width: 15%"></div>
         </div>
         <div class="tech-label wind-label">Wind</div>
         <div class="tech-description">
