@@ -1,6 +1,6 @@
 /* d3: dynamic stacked line chart.js */
 var n = 40; //number of points to display at any given time
-var needle;
+var needle, techBars;
 
 //Overload d3 with a method to control the zindex of elements
 d3.selection.prototype.moveToFront = function() {
@@ -68,6 +68,41 @@ function loadChart(data){
       .attr("class", "area")
       .attr("d", area);
   
+  //Set up the current mix bars 
+  techBars = d3.select('#techBars'); 
+  var mix = GM.getCurrentMix();
+  for (tech in mix){
+    if (typeof mix[tech] == 'function'){
+      continue;
+    }
+    //Set initial zero value for each tech
+    techBars.append("rect")
+    .attr("class",'tech-bar ' + tech + '-bar')
+    .attr("x", 38)
+    .attr("y", y(0))
+    .attr("width", 7)
+    .attr("height", 0);
+  }
+  techBars.update = function(){
+    var mix = GM.getCurrentMix();
+    var techBarFoundation = 0;
+    for (tech in mix){
+      if (typeof mix[tech] == 'function'){
+        continue;
+      }
+      //Set current value for each tech
+      var barHeightPx = (y(0) - y(mix[tech]));
+      techBars.select('.'+tech+'-bar')
+      .attr("y", y(techBarFoundation) - barHeightPx)
+      .attr("height", barHeightPx);
+      //Inverse Increment foundation so the bars stack
+      techBarFoundation += mix[tech];
+    }
+    return this;
+  };
+  techBars.update().moveToFront();
+  
+  
   //Set up the needle, move it to the front, and set it to the appropriate starting value
   needle = d3.select("#needle");
   needle.moveToFront();
@@ -76,6 +111,8 @@ function loadChart(data){
     return this.attr('transform','translate(0,'+pos+')');
   };
   needle.moveTo(GM.getCurrentSupply());
+  
+                  
   
   tick();
   

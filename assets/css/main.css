@@ -200,6 +200,26 @@ body {
   stroke-width: 1.5px;
 }
 
+.tech-bar.wind-bar {
+  fill: #7ba7ab;
+}
+.tech-bar.solar-bar {
+  fill: #edcd4e;
+}
+.tech-bar.coal-bar {
+  fill: #605747;
+}
+.tech-bar.nuclear-bar {
+  fill: #b71dd3;
+}
+.tech-bar.hydro-bar {
+  fill: #3399cc;
+}
+.tech-bar.bio-bar {
+  fill: #24d73d;
+}
+
+
 
 /* Bootstrap Button Tweaks */
 .btn-remove {

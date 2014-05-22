@@ -47,8 +47,8 @@ function buildGameControls(technologies){
     }
     //Assemble capacity meters
     $('<div class="progress capacity-' + tech.name + '"></div')
-      .append('<div class="bar used" style="width: 20%"></div>') //set by refreshTechMeters()
-      .append('<div class="bar available" style="width: 60%"></div') //set by refreshTechMeters()
+      .append('<div class="bar used" style="width: 20%"></div>') //set by updateControlMeters()
+      .append('<div class="bar available" style="width: 60%"></div') //set by updateControlMeters()
       .appendTo($control);
     //Assemble tech label
     $('<div class="tech-label ' + tech.name + '-label">' + GM.technologies[tech.name].label + '</div>')
@@ -72,6 +72,9 @@ function buildGameControls(technologies){
 
     //Add to main controls area
     $('#techControls').append($control);
+    
+    //Initiate
+    updateControls();
   }
   
   //Initialize game control buttons
@@ -80,7 +83,8 @@ function buildGameControls(technologies){
     var tech = parts[0],
          val = parts[1];
     GM.mix.tweak(tech,val);
-    updateControlMeters();
+    updateControls();
+    techBars.update();
     needle.moveTo(GM.getCurrentSupply());
   });
 }
@@ -88,7 +92,7 @@ function buildGameControls(technologies){
 function updateControlMeters(){
   var mix = GM.getCurrentMix();
   //Both current supply and available capacity must be set as a percentage
-  //of an arbitrary value to make availabilities visually relative. -jw
+  //of an arbitrary value to make availabilities visually relative.
   var techMaxCapacity = 100;
   var techCurrentSupply = 0;
   for (t in mix){
@@ -98,10 +102,15 @@ function updateControlMeters(){
     
     //Set current value for each mix as a percentage of techMaxCapacity
     techCurrentSupply = Math.round(mix[t] / techMaxCapacity * 100) + '%';
-    console.log(t+': '+techCurrentSupply);
     $('.capacity-'+ t +' .bar.used').css('width',techCurrentSupply);
     
     //Set the max available value for each mix as a percentage of techMaxCapacity
     //TODO: Do this thing above.
   }
+}
+
+function updateControls(){
+  //Aggregate update of all control elements
+  updateControlMeters();
+  //updateControlButtons (disabled or enabled)
 }
