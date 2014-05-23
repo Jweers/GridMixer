@@ -44,8 +44,8 @@
       
       <div class="tech-control">
         <span class="tech-icon solar-icon"></span>
-        <button class="btn tech-btn btn-mini" id="solar-up"><i class="icon-arrow-up"></i><span class="tech-btn-label">s</span></button>
-        <button class="btn tech-btn btn-mini" id="solar-down"><i class="icon-arrow-down"></i><span class="tech-btn-label">d</span></button>
+        <button class="btn tech-btn btn-mini" id="solar-up"><i class="icon-chevron-up"></i><span class="tech-btn-label">s</span></button>
+        <button class="btn tech-btn btn-mini" id="solar-down"><i class="icon-chevron-down"></i><span class="tech-btn-label">d</span></button>
         <div class="progress capacity-solar">
           <div class="bar used" style="width: 10%"></div>
           <div class="bar available" style="width: 20%"></div>

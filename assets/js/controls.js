@@ -22,8 +22,15 @@ $(function(){
     console.log(keypressed);
     $('.tech-btn-label:contains("'+keypressed+'")').each(function(){
       if ($(this).text() == keypressed){
-        var id = $(this).parent().addClass('active').click().attr('id');
-        setTimeout(function(){$('#'+id).removeClass('active');}, 100);
+        var $btn = $(this).parent();
+        if ($btn.is(':disabled')){
+          //flash? or shake?
+          $btn.addClass('btn-danger');
+          setTimeout(function(){$btn.removeClass('btn-danger');}, 100);
+          return false;
+        }
+        $btn.addClass('active').click();
+        setTimeout(function(){$btn.removeClass('active');}, 100);
       }
     });
   });
@@ -109,8 +116,33 @@ function updateControlMeters(){
   }
 }
 
+function updateControlButtons(){
+  var mix = GM.getCurrentMix();
+  //Restore all buttons by default
+  $('.tech-btn').attr('disabled',false);
+  for (t in mix){
+    if (typeof mix[t] == 'function'){
+      continue;
+    }
+    var currentMix = mix[t];
+    var maxCapacity = GM.technologies[t].maxCapacity; //Level-set max capacity
+    
+    console.log(t+': '+currentMix+' of '+maxCapacity);
+  
+    //Disable the tech-up button if the tech has reached its max
+    if (currentMix >= maxCapacity){
+      $('#'+t+'-up').attr('disabled','used it all');
+    }
+   
+    //Disable the tech-down button if the tech is not currently being used (can't use negative capacity)
+    if (currentMix <= 0){
+      $('#'+t+'-down').attr('disabled','nothing to use');
+    }
+  }
+}
+
 function updateControls(){
   //Aggregate update of all control elements
   updateControlMeters();
-  //updateControlButtons (disabled or enabled)
+  updateControlButtons(); //(disable or enable)
 }
