@@ -102,7 +102,6 @@ var GM = {
       if (dir == "down"){
         this[tech] -= incrementFactor;
       }
-      console.log(GM.mix); //Debug
       return this[tech];
     } 
   },

@@ -19,7 +19,6 @@ $(function(){
   //Initialize coresponding key commands
   $(document).keypress(function(e){
     var keypressed = String.fromCharCode(e.charCode);
-    console.log(keypressed);
     $('.tech-btn-label:contains("'+keypressed+'")').each(function(){
       if ($(this).text() == keypressed){
         var $btn = $(this).parent();
@@ -126,8 +125,6 @@ function updateControlButtons(){
     }
     var currentMix = mix[t];
     var maxCapacity = GM.technologies[t].maxCapacity; //Level-set max capacity
-    
-    console.log(t+': '+currentMix+' of '+maxCapacity);
   
     //Disable the tech-up button if the tech has reached its max
     if (currentMix >= maxCapacity){
