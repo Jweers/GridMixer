@@ -23,12 +23,12 @@ function loadChart(data){
     .range([height, 0]);
   
   var line = d3.svg.line()
-    .interpolate("basis")
+    .interpolate("cardinal")
     .x(function(d) { return x(d.time); })
     .y(function(d) { return y(d.demand); });
   
   var area = d3.svg.area()
-    .interpolate("basis")
+    .interpolate("cardinal")
     .x(function(d) { return x(d.time); })
     .y0(height)
     .y1(function(d) { return y(d.demand); });
