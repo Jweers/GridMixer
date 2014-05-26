@@ -115,6 +115,9 @@ function updateControlMeters(){
   }
 }
 
+/**
+ * Disables or enables control buttons based on resource availability
+ */
 function updateControlButtons(){
   var mix = GM.getCurrentMix();
   //Restore all buttons by default
@@ -138,8 +141,30 @@ function updateControlButtons(){
   }
 }
 
+/**
+ * Aggregates update of all control elements
+ */
 function updateControls(){
-  //Aggregate update of all control elements
   updateControlMeters();
-  updateControlButtons(); //(disable or enable)
+  updateControlButtons();
+}
+
+/**
+ * Updates the parity and sets the appropriate color
+ */
+function updateParity(){
+  var $parity = $('.parity > span').text(GM.getCurrentParity()).parent();
+
+  //Remove any previous colorations
+  $parity.removeClass('text-success text-error text-warning');
+  
+  //Get disparity and use to color parity
+  var disparity = GM.getCurrentDisparity();
+  if (disparity <= GM.tolerance){
+    $parity.addClass('text-success');
+  }else if (disparity > (GM.tolerance * 2)){
+    $parity.addClass('text-error');
+  }else{
+    $parity.addClass('text-warning');
+  }
 }

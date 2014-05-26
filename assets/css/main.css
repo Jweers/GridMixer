@@ -6,6 +6,11 @@ body {
   font-family: "Open Sans", Helvetica, sans-serif;
 }
 
+#app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 .hidden {
   display: none !important;
 }
@@ -219,6 +224,18 @@ body {
   fill: #24d73d;
 }
 
+/* Scoreboard */
+.scoreboard {
+  float: right;
+  font-size: 2em;
+}
+
+/* Parity */
+.parity {
+  font-size: 1.8em;
+}
+
+/* ---- Legacy ---*/
 
 
 /* Bootstrap Button Tweaks */

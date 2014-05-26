@@ -130,6 +130,9 @@ function loadChart(data){
         time: GM.currentTime + (n * GM.intervalDuration)
       }); */
       
+      //Update the parity and score
+      updateParity();
+      
       // slide the x-axis left
       axis.transition()
           .duration(GM.speed)
@@ -156,7 +159,7 @@ function loadChart(data){
 
       
       // pop the old data point off the front
-      data.shift();      
+      data.shift(); //Necessary?  
     } else {
       setTimeout(tick, GM.speed);
     }

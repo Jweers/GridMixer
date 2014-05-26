@@ -1,11 +1,37 @@
 /* GM game controller (object) */ 
 var GM = {
   active: false,
-  level: {},
+  levelData: {},
   currentTime: undefined, //starts at midnight and increments by intervalDuration
+  
+  getCurrentDemand: function(){
+    for (i in this.levelData){
+      if (this.levelData[i].time == this.currentTime){
+        return this.levelData[i].demand;
+      }
+    }
+    return null;
+  },
+  
+  getCurrentDisparity: function(){
+    return Math.abs(this.idealParity - this.getCurrentParity());
+  },
   
   getCurrentMix: function(){
     return this.mix;
+  },
+  
+  /**
+   * Calculates the current parity from the difference in the current supply and demand
+   * Ideal parity: 60.00 Hz (this.idealParity)
+   * p = +/-d^2 * t - d * t
+   * @returns float Parity
+   */
+  getCurrentParity: function(){
+    var difference = (this.getCurrentSupply() - this.getCurrentDemand());
+    var sign = difference? (difference < 0)? -1 : 1 : 0;
+    var parity = (this.idealParity + (Math.pow(difference,2) * this.tolerance * sign) - (difference * this.tolerance)).toFixed(2);
+    return parity;
   },
   
   getCurrentSupply: function(){
@@ -52,8 +78,6 @@ var GM = {
           return;
         }
         var levelInfo = response.result;
-        GM.level = levelInfo; // keep? or parse? //!!!!
-     
         //load level starting mix and overload max capacity
         for (i in levelInfo.technologies){
           var tech = levelInfo.technologies[i];
@@ -67,12 +91,14 @@ var GM = {
           var time = levelData[i].time.split(':');
           levelData[i].time = new Date().setHours(time[0],time[1],time[2],0);
         }
-        GM.level.demand = levelData;
+        GM.levelData = levelData;
         loadChart(levelData);
         buildGameControls(levelInfo.technologies);
       }
     });    
   },
+  
+  idealParity: 60.00,
   
   incrementTime: function(){
     this.currentTime += this.intervalDuration;
@@ -168,7 +194,9 @@ var GM = {
       availabilityDesc: 'constant',
       availableCapacity: [] //set by level
     }
-  }
+  },
+  
+  tolerance: 0.02 //Adjust to tweak scoring
 };
 
 //Initialize

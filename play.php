@@ -11,7 +11,13 @@
 ?>
   <div id="app-container" style="position:relative;">
 
-    <h1>Grid Mixer Test</h1>
+    <h1>Grid Mixer</h1>
+    
+    <div class="scoreboard">
+      <div id="score">0</div>
+    </div>
+    
+    <div class="parity text-success"><span>60.00</span> Hz</div>
     
     <svg id="livegrid" class="chart" width="420" height="120">
       <polygon id="needle" fill="lightgreen" stroke="green" stroke-width="2" points="25,30 25,10 40,20" />
