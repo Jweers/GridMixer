@@ -29,9 +29,12 @@ var GM = {
    */
   getCurrentParity: function(){
     var difference = (this.getCurrentSupply() - this.getCurrentDemand());
-    var sign = difference? (difference < 0)? -1 : 1 : 0;
-    var parity = (this.idealParity + (Math.pow(difference,2) * this.tolerance * sign) - (difference * this.tolerance)).toFixed(2);
+    var parity = (this.idealParity + (Math.pow(difference,2) * this.tolerance * signum(difference)) - (difference * this.tolerance)).toFixed(2);
     return parity;
+  },
+  
+  getCurrentScore: function(){
+    return this.score;
   },
   
   getCurrentSupply: function(){
@@ -100,6 +103,19 @@ var GM = {
   
   idealParity: 60.00,
   
+  incrementScore: function(){
+    //Get disparity and use to calculate score
+    var scoreDelta = 0;
+    var disparity = GM.getCurrentDisparity();
+    if (disparity <= GM.tolerance){
+      scoreDelta += 100;
+    }else if (disparity > (GM.tolerance * 2)){
+      scoreDelta -= Math.round(disparity * 5) * 10;
+    }
+    this.score += scoreDelta;
+    return scoreDelta;
+  },
+  
   incrementTime: function(){
     this.currentTime += this.intervalDuration;
     return this.currentTime;
@@ -131,6 +147,8 @@ var GM = {
       return this[tech];
     } 
   },
+  
+  score: 0, //Overridden with players base score at load (or at least it should be)
   
   speed: 300, //Tweak this to control the speed of the level (lower number = faster level)
   

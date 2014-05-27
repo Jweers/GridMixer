@@ -152,19 +152,31 @@ function updateControls(){
 /**
  * Updates the parity and sets the appropriate color
  */
-function updateParity(){
+function updateParityAndScore(){
   var $parity = $('.parity > span').text(GM.getCurrentParity()).parent();
+  var scoreDelta = GM.incrementScore();
+  $('#score').text(GM.getCurrentScore());
 
   //Remove any previous colorations
   $parity.removeClass('text-success text-error text-warning');
   
-  //Get disparity and use to color parity
-  var disparity = GM.getCurrentDisparity();
-  if (disparity <= GM.tolerance){
+  //Show score tick and use the delta to colorize the parity display
+  var sign = '';
+  var $scoreTick = $('<div class="score-tick"></div>');
+  if (scoreDelta > 0){
+    sign = '+';
     $parity.addClass('text-success');
-  }else if (disparity > (GM.tolerance * 2)){
+    $scoreTick.addClass('text-success');
+  }else if (scoreDelta < 0){
+    sign = '-';
     $parity.addClass('text-error');
+    $scoreTick.addClass('text-error');
   }else{
     $parity.addClass('text-warning');
+    $scoreTick.addClass('text-warning');
   }
+  $scoreTick.text(sign + Math.abs(scoreDelta))
+    .appendTo('.scoreboard');
+  //Initiate float away (animation handled in css transition)
+  setTimeout(function(){ $scoreTick.css('opacity',0).css('top','-60px'); }, 13);
 }

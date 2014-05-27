@@ -131,7 +131,7 @@ function loadChart(data){
       }); */
       
       //Update the parity and score
-      updateParity();
+      updateParityAndScore();
       
       // slide the x-axis left
       axis.transition()

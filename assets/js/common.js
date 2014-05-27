@@ -143,6 +143,21 @@ function isNumeric(val){
   return !isNaN(new Number(val));
 }
 
+
+/**
+ * Determine the mathematical sign of a value and return as +/- 1
+ * May someday be replaced by Math.sign(), currently proposed in next javascript base
+ * @param val Number
+ * @returns 0, -1, or 1
+ */
+function signum(val){
+  if (!val || !isNumeric(val)){
+    return 0;
+  }
+  return (val < 0)? -1 : 1;
+}
+
+
 /**
  * Returns the human-readable version of a filesize in bytes
  * Example: var size = getHumanReadableFileSize(3984628); //3.8 MB

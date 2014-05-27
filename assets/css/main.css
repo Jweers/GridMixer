@@ -228,6 +228,16 @@ body {
 .scoreboard {
   float: right;
   font-size: 2em;
+  position: relative;
+}
+
+.score-tick {
+  position: absolute;
+  font-size: 60%;
+  top: -15px;
+  right: 2px;
+  opacity: 1;
+  transition: top 2s, opacity 2s;
 }
 
 /* Parity */
