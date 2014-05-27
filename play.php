@@ -13,6 +13,8 @@
 
     <h1>Grid Mixer</h1>
     
+    <h3>Level <span class="level-num">X</span>: <span class="level-name">The X-ening</span></h3>
+    
     <div class="scoreboard">
       <div id="score">0</div>
     </div>
@@ -25,11 +27,6 @@
     </svg>
     <script type="text/javascript" src="assets/js/chart.js"></script>
     <script type="text/javascript" src="assets/js/controls.js"></script>
-    
-    <p>
-      <button class="btn btn-success" onclick="GM.start()">Start</button>
-      <button class="btn btn-danger" onclick="GM.stop()">Stop</button>
-    </p>
     
     <div id="techControls">
       <div class="tech-control">
@@ -64,6 +61,28 @@
         </div>
       </div>
     </div>
+    
+    <p style="clear: both;">&nbsp;</p>
+    
+    <div id="levelIntroModal" class="modal">
+      <div class="modal-header">
+        <h2>Level <span class="level-num">X</span>: <span class="level-name">Error</span></h2>
+      </div>
+      <div class="modal-body">
+        <p class="lead level-description">Error loading level!</p>
+        <p class="lead level-countdown"></p>
+      </div>
+      <div id="levelControls" class="modal-footer">
+        <button class="btn level-btn" id="levelAbort">Abort</button>
+        <button class="btn level-btn btn-success" id="levelBegin" data-loading-text="beginning..">Begin!</button>
+      </div>
+    </div>
+   
+    
+    <p class="well" style="margin-top: 1em;"> <!-- Debug! -->
+      <button class="btn btn-success" onclick="GM.start()">Start</button>
+      <button class="btn btn-danger" onclick="GM.stop()">Stop</button>
+    </p>
 
   </div>
   <script type="text/javascript">

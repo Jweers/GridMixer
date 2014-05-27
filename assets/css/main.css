@@ -23,6 +23,15 @@ body {
   border-top: 1px solid whitesmoke;
 }
 
+.numerical {
+  font-family: Courier New, Courier, Arial;
+}
+
+/* Level Intro */
+#levelIntroModal .level-countdown {
+  font-size: 4em;
+  text-align: center;
+}
 
 /* Controls */
 .tech-control {

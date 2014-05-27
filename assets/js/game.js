@@ -2,6 +2,7 @@
 var GM = {
   active: false,
   levelData: {},
+  countdown: 3, //The number of "seconds" before a level starts
   currentTime: undefined, //starts at midnight and increments by intervalDuration
   
   getCurrentDemand: function(){
@@ -87,6 +88,10 @@ var GM = {
           GM.mix[tech.name] = tech.startingVal;
           GM.technologies[tech.name].maxCapacity = tech.maxVal;
         }
+        //load level meta info (loads into multiple places)
+        $('.level-num').text(levelInfo.id);
+        $('.level-name').text(levelInfo.name);
+        $('.level-description').text(levelInfo.desc);
         //load level data
         var levelData =  levelInfo.demand;
         for (i in levelData){

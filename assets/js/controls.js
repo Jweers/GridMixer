@@ -33,6 +33,10 @@ $(function(){
       }
     });
   });
+  
+  //Load level intro modal and assign functions
+  $('#levelIntroModal').modal('show');
+  
 });
 
 
@@ -92,6 +96,16 @@ function buildGameControls(technologies){
     updateControls();
     techBars.update();
     needle.moveTo(GM.getCurrentSupply());
+  });
+  
+  $('#levelAbort').click(function(){
+    //Someday: forget any score accumulated on this level
+    document.location.href = 'home';
+  });
+  
+  $('#levelBegin').click(function(){
+    $(this).button('loading');
+    beginLevelIn(GM.countdown);
   });
 }
 
@@ -183,4 +197,15 @@ function updateParityAndScore(){
       $(this).remove();
     }); 
   }, 13);
+}
+
+function beginLevelIn(countdown){
+  if (countdown > 0){
+    $('.level-countdown').text(countdown);
+    setTimeout(function(){ beginLevelIn(countdown - 1); }, 800);
+    return false;
+  }
+  //Start the game!
+  $('#levelIntroModal').modal('hide');
+  GM.start();
 }
