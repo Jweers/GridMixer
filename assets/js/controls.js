@@ -178,5 +178,9 @@ function updateParityAndScore(){
   $scoreTick.text(sign + Math.abs(scoreDelta))
     .appendTo('.scoreboard');
   //Initiate float away (animation handled in css transition)
-  setTimeout(function(){ $scoreTick.css('opacity',0).css('top','-60px'); }, 13);
+  setTimeout(function(){ 
+    $scoreTick.css('top','-60px').fadeOut(1300,function(){
+      $(this).remove();
+    }); 
+  }, 13);
 }
