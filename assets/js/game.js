@@ -53,6 +53,16 @@ var GM = {
     return this.currentTime;
   },
   
+  getFinalScoreElements: function(){
+    var scoreElements = [
+      {val:this.getCurrentScore(),desc:"Base Score",id:'base'},
+      {val:-400,desc:"A few brownouts rolled through the system preventing a few angry citizens from watching the latest Gamer of Thrones"},
+      {val:(this.getCurrentScore() - 400),desc:"Total Points Earned",id:'total'}
+    ];
+    
+    return scoreElements;
+  },
+  
   getNumberOfIntervals: function(){
     var timeInADay = 24*60*60*1000;
     return timeInADay / this.intervalDuration;

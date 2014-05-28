@@ -33,6 +33,33 @@ body {
   text-align: center;
 }
 
+/* Final Score */
+#finalScoreModal {
+  width: 600px;
+  margin-left: -300px;
+}
+
+#finalScoreModal .row {
+  margin-bottom: 20px;
+  margin-left: 0px;
+}
+
+#finalScoreModal .row .score-value {
+  text-align: right;
+  margin-top: -6px;
+  margin-bottom: 0px; /* override lead class */
+}
+
+#finalScoreModal .row .score-desc {
+  color: #555;
+}
+
+#finalScoreModal .total-row {
+  border-top: 1px solid #aaa;
+  margin-bottom: 5px;
+  padding-top: 10px;
+} 
+
 /* Controls */
 .tech-control {
   float: left;

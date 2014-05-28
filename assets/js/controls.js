@@ -215,6 +215,47 @@ function beginLevelIn(countdown){
 }
 
 function showFinalScore(){
+  /*
+   * <div class="modal-body">
+        <div class="row">
+          <span class="span2 score-value lead text-success">2000 pts</span>
+          <span class="span5 score-desc">Base Score</span>
+        </div>
+        <div class="row">
+          <span class="span2 score-value lead text-error">-400 pts</span>
+          <span class="span5 score-desc">A few brownouts rolled through the system preventing your aunt from watching her soaps</span>
+        </div>
+        <div class="row total-row">
+          <span class="span2 score-value lead text-success">1600 pts</span>
+          <span class="span5 score-total-desc">Total Points Earned</span>
+        </div>
+      </div>
+   */
+  var $scoreboard = $('#finalScoreModal .modal-body');
+  var total = 0;
+  //temp
+  var scoreElements = GM.getFinalScoreElements();
+  
+  for (el in scoreElements){
+    var score = scoreElements[el];
+    var $row = $('<div class="row"></div>');
+    if (score.id == 'total'){
+      $row.addClass('total-row');
+    }
+    var scoreSpanSign = (signum(score.val) == 1 && score.id != 'base')? '+':'';
+    var scoreSpanClass = (signum(score.val) == -1)? ' text-error':' text-success';
+    
+    $('<span class="span2 score-value lead' + scoreSpanClass + '"></span>')
+      .text(scoreSpanSign + score.val + ' pts')
+      .appendTo($row);
+    $('<span class="span5 score-desc"></span>')
+      .text(score.desc)
+      .appendTo($row);
+    
+    $scoreboard.append($row);
+    total += score.val;
+  }
+  
   //Get score, populate template, then show
   $('#finalScoreModal').modal('show');
 }

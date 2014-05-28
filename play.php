@@ -83,18 +83,22 @@
         <h2>Congratulations!</h2>
       </div>
       <div class="modal-body">
-        <p>Score will go here.</p>
+        <!-- Populated by js showFinalScore() -->
       </div>
       <div class="modal-footer">
         <button class="btn level-btn btn-success" id="levelComplete">Continue</button>
       </div>
     </div>
    
-    
+    <?php 
+      //Debug
+      if (false): 
+    ?>
     <p class="well" style="margin-top: 1em;"> <!-- Debug! -->
       <button class="btn btn-success" onclick="GM.start()">Start</button>
       <button class="btn btn-danger" onclick="GM.stop()">Stop</button>
     </p>
+    <?php endif; ?>
 
   </div>
   <script type="text/javascript">
