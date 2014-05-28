@@ -115,7 +115,7 @@ var GM = {
     if (disparity <= GM.tolerance){
       scoreDelta += 100;
     }else if (disparity > (GM.tolerance * 2)){
-      scoreDelta -= Math.round(disparity * 5) * 10;
+      scoreDelta -= Math.round(disparity * 100) * 10;
     }
     this.score += scoreDelta;
     return scoreDelta;
