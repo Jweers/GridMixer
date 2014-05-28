@@ -56,7 +56,7 @@ var GM = {
   getFinalScoreElements: function(){
     var scoreElements = [
       {val:this.getCurrentScore(),desc:"Base Score",id:'base'},
-      {val:-400,desc:"A few brownouts rolled through the system preventing a few angry citizens from watching the latest Gamer of Thrones"},
+      {val:-400,desc:"A few brownouts rolled through the system preventing the mayor from watching the latest Game of Thrones!"},
       {val:(this.getCurrentScore() - 400),desc:"Total Points Earned",id:'total'}
     ];
     
