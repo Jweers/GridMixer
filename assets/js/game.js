@@ -150,7 +150,16 @@ var GM = {
         this[tech] -= incrementFactor;
       }
       return this[tech];
-    } 
+    }
+  },
+  
+  outOfTime: function(){
+    if (this.levelData[this.levelData.length-1].time == this.currentTime){
+      //Stop the game if the last tick has arrived
+      this.stop();
+      return true;
+    }
+    return false;
   },
   
   score: 0, //Overridden with players base score at load (or at least it should be)

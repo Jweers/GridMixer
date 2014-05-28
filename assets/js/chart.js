@@ -123,6 +123,11 @@ function loadChart(data){
       GM.incrementTime();
       x.domain([GM.currentTime, (n - 2) * GM.intervalDuration + GM.currentTime]);
       
+      if (GM.outOfTime()){
+        alert('done');
+        //TODO: Show the final score!
+      }
+      
       // push a new data point onto the back
       /* Not necessary.  May be able to add end-of-level shading here...
       data.push({
@@ -159,7 +164,7 @@ function loadChart(data){
 
       
       // pop the old data point off the front
-      data.shift(); //Necessary?  
+      data.shift(); //Necessary?
     } else {
       setTimeout(tick, GM.speed);
     }
