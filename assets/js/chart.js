@@ -124,8 +124,7 @@ function loadChart(data){
       x.domain([GM.currentTime, (n - 2) * GM.intervalDuration + GM.currentTime]);
       
       if (GM.outOfTime()){
-        alert('done');
-        //TODO: Show the final score!
+        showFinalScore();
       }
       
       // push a new data point onto the back

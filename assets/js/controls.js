@@ -34,7 +34,7 @@ $(function(){
     });
   });
   
-  //Load level intro modal and assign functions
+  //Load level intro modal
   $('#levelIntroModal').modal('show');
   
 });
@@ -106,6 +106,10 @@ function buildGameControls(technologies){
   $('#levelBegin').click(function(){
     $(this).button('loading');
     beginLevelIn(GM.countdown);
+  });
+  
+  $('#levelComplete').click(function(){
+    $('#finalScoreModal').modal('hide');
   });
 }
 
@@ -208,5 +212,10 @@ function beginLevelIn(countdown){
   //Start the game!
   $('#levelIntroModal').modal('hide');
   GM.start();
+}
+
+function showFinalScore(){
+  //Get score, populate template, then show
+  $('#finalScoreModal').modal('show');
 }
 

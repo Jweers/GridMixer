@@ -77,6 +77,18 @@
         <button class="btn level-btn btn-success" id="levelBegin" data-loading-text="beginning..">Begin!</button>
       </div>
     </div>
+    
+    <div id="finalScoreModal" class="modal hide" aria-hidden="true" style="display: none;">
+      <div class="modal-header">
+        <h2>Congratulations!</h2>
+      </div>
+      <div class="modal-body">
+        <p>Score will go here.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn level-btn btn-success" id="levelComplete">Continue</button>
+      </div>
+    </div>
    
     
     <p class="well" style="margin-top: 1em;"> <!-- Debug! -->
