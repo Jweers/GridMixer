@@ -191,6 +191,7 @@ var GM = {
       rampRateDesc: 'slow',
       rampRate: 3,
       maxCapacity: 100, //MW, default (can be set by level or user purchases)
+      polutionRate: 979, //g CO2 / kWh
       availabilityDesc: 'constant',
       availableCapacity: [] //set by level
     },
@@ -198,6 +199,7 @@ var GM = {
       rampRateDesc: 'medium',
       rampRate: 2,
       maxCapacity: 50, //MW, default (can be set by level or user purchases)
+      polutionRate: 7, //g CO2 / kWh
       availabilityDesc: 'constant',
       availableCapacity: [] //set by level
     },
@@ -205,6 +207,7 @@ var GM = {
       rampRateDesc: 'fast',
       rampRate: 1,
       maxCapacity: 15, //MW, default (can be set by level or user purchases)
+      polutionRate: 11, //g CO2 / kWh
       availabilityDesc: 'variable',
       availableCapacity: [] //set by level
     },
@@ -212,6 +215,7 @@ var GM = {
       rampRateDesc: 'fast',
       rampRate: 1,
       maxCapacity: 20, //MW, default (can be set by level or user purchases)
+      polutionRate: 44, //g CO2 / kWh
       availabilityDesc: 'cycles daily',
       availableCapacity: [] //set by level
     },
@@ -219,6 +223,7 @@ var GM = {
       rampRateDesc: 'fast',
       rampRate: 1,
       maxCapacity: 50, //MW, default (can be set by level or user purchases)
+      polutionRate: 750, //g CO2 / kWh
       availabilityDesc: 'constant',
       availableCapacity: [] //set by level
     },
@@ -226,6 +231,7 @@ var GM = {
       rampRateDesc: 'very slow',
       rampRate: 5,
       maxCapacity: 150, //MW, default (can be set by level or user purchases)
+      polutionRate: 12, //g CO2 / kWh
       availabilityDesc: 'constant',
       availableCapacity: [] //set by level
     },
