@@ -215,22 +215,6 @@ function beginLevelIn(countdown){
 }
 
 function showFinalScore(){
-  /*
-   * <div class="modal-body">
-        <div class="row">
-          <span class="span2 score-value lead text-success">2000 pts</span>
-          <span class="span5 score-desc">Base Score</span>
-        </div>
-        <div class="row">
-          <span class="span2 score-value lead text-error">-400 pts</span>
-          <span class="span5 score-desc">A few brownouts rolled through the system preventing your aunt from watching her soaps</span>
-        </div>
-        <div class="row total-row">
-          <span class="span2 score-value lead text-success">1600 pts</span>
-          <span class="span5 score-total-desc">Total Points Earned</span>
-        </div>
-      </div>
-   */
   var $scoreboard = $('#finalScoreModal .modal-body');
   var total = 0;
   //temp
