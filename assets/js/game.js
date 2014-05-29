@@ -53,6 +53,16 @@ var GM = {
     return this.currentTime;
   },
   
+  getTechCurrentCapacity: function(tech){
+    var currentCapacity = this.technologies[tech].availableCapacity[this.getCurrentTime];
+
+    //Handle unspecified (dev only)
+    if (currentCapacity == undefined){
+      currentCapacity = this.technologies[tech].maxCapacity;
+    }
+    return currentCapacity;
+  },
+  
   getFinalScoreElements: function(){
     var scoreElements = [
       {val:this.getCurrentScore(),desc:"Base Score",id:'base'},

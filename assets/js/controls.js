@@ -129,7 +129,8 @@ function updateControlMeters(){
     $('.capacity-'+ t +' .bar.used').css('width',techCurrentSupply);
     
     //Set the max available value for each mix as a percentage of techMaxCapacity
-    //TODO: Do this thing above.
+    techCurrentCapacity = Math.round(GM.getTechCurrentCapacity(t) / techMaxCapacity * 100) + '%';
+    $('.capacity-'+ t +' .bar.available').css('width',techCurrentCapacity);
   }
 }
 
